@@ -12,19 +12,88 @@ try-except blocks are used to handle potential exceptions like ValueError (for i
 This ensures the program's robustness and prevents unexpected crashes.
 
 
- Features:
-Vehicle Parking:
-Simulates parking vehicles of different types (two-wheelers and four-wheelers).
-Assigns a unique identifier (vehicle number) to each vehicle.
-Records the entry time of each vehicle.
-Charge Calculation:
-Calculates parking charges based on the vehicle type and parking duration.
-Rounds up the parking duration to the nearest hour.
-Multithreading:
-Employs multiple threads to simulate concurrent vehicle entry and exit operations.
-Improves efficiency by allowing multiple operations to occur simultaneously.
-Error Handling:
-Implements error handling to gracefully handle invalid inputs and unexpected scenarios.
-Raises ValueError for invalid vehicle types or duplicate parking attempts.
-Raises KeyError for attempting to calculate charges for a non-existent vehicle.
+Key Components:
+
+1. Parking Charges Dictionary (CHARGES):
+Stores hourly parking rates for different vehicle types (two_wheeler and four_wheeler).
+
+2. ParkingLot Class:
+Manages the parking lot operations:
+
+parking_data: A dictionary storing parked vehicle details ({vehicle_number: (vehicle_type, entry_time)}).
+park_vehicle(vehicle_number, vehicle_type):
+Parks a vehicle if it isn't already parked.
+Records the vehicle type and entry time.
+
+calculate_charges(vehicle_number):
+
+Calculates the total charges for a vehicle based on the time parked.
+
+Rounds up to the next hour and multiplies by the hourly rate.
+
+Removes the vehicle from parking_data.
+
+3. Multithreading:
+Simulates simultaneous vehicle actions (parking and exiting) using the threading module.
+
+4. handle_vehicle Function:
+
+Manages vehicle actions (parking or exiting) by invoking appropriate methods in the ParkingLot class.
+
+Execution Flow:
+
+1. Initialize the ParkingLot:
+
+An instance of ParkingLot is created.
+
+2. Actions List:
+
+A sequence of vehicle actions is defined:
+
+park: Adds a vehicle to the parking lot.
+
+exit: Calculates charges for a parked vehicle and removes it.
+
+
+3. Threads:
+
+For each action, a thread is created to handle the operation.
+
+A small delay (time.sleep(1)) simulates staggered vehicle activities.
+
+
+
+4. Processing Actions:
+
+Each thread performs the park or exit action, ensuring that multiple vehicles can act simultaneously.
+
+5. Join Threads:
+
+Ensures that the main program waits for all threads to finish execution.
+---
+
+Output Behavior:
+
+When a vehicle is parked:
+
+Vehicle details are added to parking_data.
+
+A confirmation message is printed.
+
+
+When a vehicle exits:
+
+The time parked is calculated, charges are displayed, and the vehicle is removed.
+
+
+Handles edge cases:
+
+Vehicle already parked, invalid vehicle type, or vehicle not found.
+Purpose:
+Simulates a parking system for practical use in real-world scenarios.
+
+Demonstrates multithreading to handle concurrent operations efficiently.
+
+
+
 
