@@ -1,0 +1,65 @@
+    		  Multithreading in Python
+
+
+A thread is an entity within a process that can be scheduled for execution. Also, it is the smallest unit of processing that can be performed in an OS (Operating System).
+
+Multithreading is a technique that allows a program to execute multiple threads concurrently within a single process.This can significantly improve the performance of applications.
+
+
+
+Concepts
+
+Thread: A thread is the smallest unit of execution within a process. It has its own program counter, stack, and local variables.
+Concurrency: Multiple threads running simultaneously, though not necessarily executing at the same exact time.
+
+Thread Creation:
+Use the threading module to create and start threads.
+Pass a target function and arguments to the Thread constructor.
+Thread Execution:
+Threads execute independently, potentially interleaving their operations.
+Thread Synchronization:
+Use synchronization mechanisms like locks, semaphores, and condition variables to coordinate access to shared resources.
+Thread Safety:
+Ensure that multiple threads can access shared data without causing data corruption.
+
+
+
+Why Use Multithreading?
+Improved Performance: Multithreading can help distribute tasks across multiple threads, leading to faster execution, especially for I/O-bound tasks.
+
+Responsiveness: It can make your application more responsive by allowing it to handle multiple tasks concurrently.
+
+Efficient Resource Utilization: Multithreading can effectively utilize multiple CPU cores, improving overall performance.
+
+When to Use Multithreading:
+Multithreading is particularly well-suited for I/O-bound tasks, such as network operations, file I/O, or database interactions. For CPU-bound tasks, consider using multiprocessing, which involves creating separate processes, each with its own Python interpreter.
+
+Important Considerations:
+Global Interpreter Lock (GIL): Python's GIL limits the number of threads that can execute Python bytecode at any given time. This can limit the performance benefits of multithreading in CPU-bound tasks.
+Thread Safety: Ensure that shared resources are accessed and modified in a thread-safe manner. Use synchronization mechanisms like locks or semaphores to coordinate access.
+Deadlocks: Be careful to avoid deadlocks, where two or more threads are waiting for each other to release a resource.
+Context Switching: Context switching between threads can incur overhead.
+
+
+
+
+Exception Handling
+Exception handling is a mechanism to handle errors and unexpected events that occur during program execution. It helps prevent program crashes and provides a way to gracefully recover from errors.
+Key Concepts:
+Try-Except Block:
+Encloses code that might raise exceptions.
+If an exception occurs, the except block is executed.
+Exception Types:
+Different types of exceptions can be handled separately.
+Common exceptions include ValueError, TypeError, ZeroDivisionError, and IOError.
+Finally Block:
+Always executes, regardless of whether an exception occurs.
+Useful for cleaning up resources, like closing files.
+
+
+
+
+
+
+
+
